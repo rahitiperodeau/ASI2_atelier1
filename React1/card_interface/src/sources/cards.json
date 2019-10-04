@@ -4,6 +4,6 @@
     {"id":3,"name":"Rahiti","description":"Fin nageur, tres utile dans un milieu aquatique","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defence":"60","attack":"50","price":"500"},
     {"id":10,"name":"Camille","description":"Rigolote est son deuxieme prenom ! Attention a ses piques","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defence":"60","attack":"50","price":"500"},
     {"id":8,"name":"Mr Muscle","description":"Un diamand brute de pomme, tout pour le muscle est son credo","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defence":"60","attack":"50","price":"500"},
-    {"id":4,"name":"Le Marsupilami","description":"houba houba houba, houbaaaaa","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defence":"60","attack":"50","price":"500"},
+    {"id":4,"name":"Le Marsupilami","description":"houba houba houba, houbaaaaa","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defence":"60","attack":"50","price":"500"}
     ]
 }
