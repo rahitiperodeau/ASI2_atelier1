@@ -13,7 +13,9 @@ class User extends React.Component{
             <div className="panel-body">
                 <UserInfo
                     userName={this.props.userName}
-                    userLastname={this.props.userLastName}
+                    surName={this.props.surName}
+                    lastname={this.props.lastName}
+                    money={this.props.money}
                 />
             </div>
         )
