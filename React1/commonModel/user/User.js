@@ -12,10 +12,10 @@ class User extends React.Component{
         return(
             <div className="panel-body">
                 <UserInfo
-                    userName={this.props.userName}
-                    surName={this.props.surName}
-                    lastname={this.props.lastName}
-                    money={this.props.money}
+                    userName={this.props.current_user.userName}
+                    surName={this.props.current_user.surName}
+                    lastname={this.props.current_user.lastName}
+                    money={this.props.current_user.money}
                 />
             </div>
         )
@@ -23,4 +23,10 @@ class User extends React.Component{
 
    
 }
-export default User;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        current_user: state.userReducer.user,
+    } };
+  
+  
+  export default connect(mapStateToProps)(User);

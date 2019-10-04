@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import User from '../user/User';
+import User from '../../commonModel/user/User';
+import {connect} from 'react-redux';
 
 class LeftSide extends Component{
     constructor(props){
@@ -8,16 +9,31 @@ class LeftSide extends Component{
     }
 
     getUSer(){
-        let user
+        /* let userName = this.props.currUser.userName;
+        let surName = this.props.currUser.surName;
+        let lastName = this.props.currUser.lastName; */
+        let array_render=[];
         
+        for(var i=0;i<this.props.currUser.users.length;i++){
+            /**
+             * ajouter seulement le current User
+             */
+        }
+        return 
     }
+
+    /**
+     * place pour la fonction de Seraph
+     */
 
     render(){
         const display_user=this.getUSer();
+
         return(
             <div>
                 {display_user}
             </div>
+
         );
     }
 }

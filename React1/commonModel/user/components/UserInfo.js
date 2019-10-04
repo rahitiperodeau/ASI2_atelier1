@@ -17,9 +17,9 @@ class UserInfo extends Component{
     render(){
         return(
             <div>
-                <h1>Username:{this.props.userName}</h1>
-                <h2>Surname:{this.props.surName}</h2>
-                <h3>Lastname:{this.props.lastName}</h3>
+                <h1>Username:{this.props.username}</h1>
+                <h2>Surname:{this.props.surname}</h2>
+                <h3>Lastname:{this.props.lastname}</h3>
                 <h4>Money:{this.props.money}</h4>
             </div>
         );
