@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import UserInfo from './components/UserInfo'
 
 class User extends React.Component{
     constructor(props){
@@ -12,10 +13,11 @@ class User extends React.Component{
         return(
             <div className="panel-body">
                 <UserInfo
-                    userName={this.props.current_user.userName}
-                    surName={this.props.current_user.surName}
-                    lastname={this.props.current_user.lastName}
-                    money={this.props.current_user.money}
+                    id={this.props.id}
+                    username={this.props.username}
+                    surname={this.props.surname}
+                    lastname={this.props.lastname}
+                    money={this.props.money}
                 />
             </div>
         )
@@ -23,10 +25,7 @@ class User extends React.Component{
 
    
 }
-const mapStateToProps = (state, ownProps) => {
-    return {
-        current_user: state.userReducer.user,
-    } };
+
   
   
-  export default connect(mapStateToProps)(User);
+  export default User;

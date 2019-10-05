@@ -8,7 +8,7 @@ class UserInfo extends Component{
             id:this.props.id,
             surname:this.props.surname,
             lastname:this.props.lastname,
-            userName:this.props.userName,
+            username:this.props.username,
             pwd:this.props.pwd,
             money:this.props.money
             
@@ -17,10 +17,11 @@ class UserInfo extends Component{
     render(){
         return(
             <div>
-                <h1>Username:{this.props.username}</h1>
-                <h2>Surname:{this.props.surname}</h2>
-                <h3>Lastname:{this.props.lastname}</h3>
-                <h4>Money:{this.props.money}</h4>
+                <div>Id:{this.props.id}</div>
+                <div>Surname:{this.props.surname}</div>
+                <div>Lastname:{this.props.lastname}</div>
+                <div>Username:{this.props.username}</div>
+                <div>Money:{this.props.money}</div>
             </div>
         );
     }
