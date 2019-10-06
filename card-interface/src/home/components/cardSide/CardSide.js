@@ -33,7 +33,7 @@ class CardSide extends Component {
     
       <div className="container-fluid">
         <div className="row">
-            <h1> Welcome to card world</h1>
+            <h1> My cards</h1>
         </div>
         <div className="row">
             <div className="col-md-4 col-lg-4" >

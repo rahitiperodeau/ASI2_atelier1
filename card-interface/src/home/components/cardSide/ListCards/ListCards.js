@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card from '../../../../Shared_Component/Card/Card'
+import Card from '../../../../commonModel/Card/Card'
 import CardLabel from './containers/CardLabel'
 import{connect } from 'react-redux';
 import setSelectedCard from '../../../../actions/index'
