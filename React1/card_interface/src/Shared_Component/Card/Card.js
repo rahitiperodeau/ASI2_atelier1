@@ -12,10 +12,7 @@ class Card extends Component {
   render() {
 
     return (
-            <div className="panel panel-default" > 
-                <div className="panel-heading">
-                    <h3 className="panel-title">{this.props.card.name}</h3>
-                </div>
+        
                 <div className="panel-body">
                     <Visual 
                         type        = "img" 
@@ -31,7 +28,7 @@ class Card extends Component {
                         price       = {Number(this.props.card.price)}
                     />
                 </div>
-            </div>
+            
     );
   }
 }

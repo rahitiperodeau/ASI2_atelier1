@@ -1,7 +1,7 @@
-export const setSelectedCard=(robot_obj)=>{
+export const setSelectedCard=(card_obj)=>{
     return {
         type: 'SELECTED_CARD',
-        obj:robot_obj
+        obj:card_obj
         
     };
 }
