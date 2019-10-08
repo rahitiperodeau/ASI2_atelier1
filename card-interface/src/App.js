@@ -12,7 +12,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 
-
 //extends the object Component
 class App extends Component {
     //class constructor whith given properties

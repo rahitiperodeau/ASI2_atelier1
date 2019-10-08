@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from './Button'
+import Button from '../../Button'
 
 class InfoCard extends Component {
     constructor(props) {
@@ -51,7 +51,7 @@ class InfoCard extends Component {
                 </div>
 
                 <Button
-                    valueButton = 'Sell'
+                    message = 'Sell'
                     idCard      = {this.props.idCard}
                 />
             
