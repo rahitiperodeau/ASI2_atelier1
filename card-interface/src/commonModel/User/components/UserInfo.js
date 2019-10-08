@@ -10,7 +10,8 @@ class UserInfo extends Component{
             lastname:this.props.lastname,
             username:this.props.username,
             pwd:this.props.pwd,
-            money:this.props.money
+            money:this.props.money,
+            email:this.props.email
             
         }
     }

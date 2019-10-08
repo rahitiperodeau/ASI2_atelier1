@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import './lib/bootstrap-3.3.7-dist/css/bootstrap.min.css';
 
 import AppHome from './home/AppHome'
+import AppLogin from './Login/Signin'
+import AppStore from './store/store'
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+
+
 
 
 
@@ -20,16 +27,25 @@ class App extends Component {
         }; 
     }
 
+
     
   //render function use to update the virtual dom
   render() {
     
     return (
 
-            
-                        <AppHome 
-                            
-                        />
+      
+          <Router>
+            <div>
+              
+              <hr />
+      
+              <Route exact path ="/"        component={AppLogin}  />
+              <Route  path      ="/home"    component={AppHome}   />
+              <Route  path      ="/market"  component={AppStore}  />
+            </div>
+          </Router>
+        
                   
 
     );

@@ -23,7 +23,7 @@ class Card extends Component {
                         family      = {this.props.card.family}
                         hp          = {Number(this.props.card.hp)}
                         energy      = {Number(this.props.card.energy)}
-                        defence     = {Number(this.props.card.defence)}
+                        defense     = {Number(this.props.card.defense)}
                         attack      = {Number(this.props.card.attack)}
                         price       = {Number(this.props.card.price)}
                     />

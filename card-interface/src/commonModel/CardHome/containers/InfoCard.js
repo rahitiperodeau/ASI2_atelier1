@@ -42,7 +42,7 @@ class InfoCard extends Component {
                         <i class=" wizard icon"></i>
                     </span>
                     <i class="protect icon"></i>
-                    <span id="cardDefenceId"> Defence {this.props.defence}</span> 
+                    <span id="cardDefenceId"> defense {this.props.defense}</span> 
                 </div>
 
                 <div class="ui bottom attached button">

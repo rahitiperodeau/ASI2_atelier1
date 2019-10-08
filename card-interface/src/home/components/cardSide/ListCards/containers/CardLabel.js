@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card from '../../../../../commonModel/Card/Card'
+import Card from '../../../../../commonModel/CardHome/Card'
 
 class CardLabel extends Component {
     //class constructor whith given properties
