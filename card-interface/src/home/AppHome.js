@@ -5,10 +5,8 @@ import * as jsonSourceCards from '../sources/cards.json';
 import User from '../commonModel/User/User'
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import globalReducer from '../reducers';
 import CardSide from './components/cardSide/CardSide'
 
-const store =createStore(globalReducer);
 
 class AppHome extends Component{
     constructor(props){
@@ -34,7 +32,7 @@ class AppHome extends Component{
 
     render(){
         return(
-            <Provider store={store}>
+            <div>
                 <div className="container-fluid">
                     <h1>Welcome to your card manager</h1>
                 </div>
@@ -54,8 +52,8 @@ class AppHome extends Component{
                 <div className="col-md-4 col-lg-4" >
                     
                 </div>
-            </Provider>
-        );
+                </div>
+        )
     };
 }
 export default AppHome;

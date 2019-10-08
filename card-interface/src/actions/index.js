@@ -6,4 +6,14 @@ export const setSelectedCard=(card_obj)=>{
     };
 }
 
+export const openSession=(session_obj)=>{
+    return {
+        type: 'OPEN_SESSION',
+        obj:session_obj
+        
+    };
+}
+
+
+
 

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import UserInfo from '../commonModel/User/components/UserInfo'
 import UserImg from '../sources/img/User.png';
 import SigninInfo from './components/SigninInfo'
-import SessionUser from '../commonModel/SessionUser'
+
+import { connect } from 'react-redux';
 
 var axios=require('axios') ;
 
-const sessionUser = new SessionUser;
 //import './lib/bootstrap-3.3.7-dist/css/bootstrap.min.css';
 
 //extends the object Component
@@ -33,7 +33,7 @@ class Signin extends Component {
         .then(function (response) {
             
             if (response.data >0){
-                sessionUser.openSession(pLogin,response.data);
+                //sessionUser.openSession(pLogin,response.data);
                 window.location.href = '/home';
 
             }else{
@@ -58,6 +58,14 @@ class Signin extends Component {
       />
    );
   }
+
+  
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      sessionUser: state.sessionReducer
+    }
+  };
 //export the current classes in order to be used outside
-export default Signin;
+export default connect(mapStateToProps)(Signin);

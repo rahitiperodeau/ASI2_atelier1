@@ -3,6 +3,7 @@ import Label from './Containers/Label';
 import Visual from './Containers/Visual';
 import { connect } from 'react-redux';
 
+
 import {setSelectedCard} from '../../actions';
 
 class Card extends Component {
