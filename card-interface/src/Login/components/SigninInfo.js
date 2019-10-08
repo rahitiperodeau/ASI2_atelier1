@@ -28,16 +28,16 @@ class SigninInfo extends Component {
         <div className="field">
           <center>
             <label>Username </label>
-            <input type="text" name="login" placeholder="Username"></input>
+            <input type="text" id="login" placeholder="Username"></input>
           </center>
           </div>
           <div className="field">
             <center>
               <label>Password </label>
-              <input type="password" name="pwd" placeholder="*******"></input>
+              <input type="password" id="pwd" placeholder="*******"></input>
             </center>
           </div>
-         <center><button onClick={()=>{this.props.processInput()}} >Let's go!</button></center>
+         <center><button type="button" onClick={()=>{this.props.processInput(document.getElementById("login").value,document.getElementById("pwd").value)}} >Let's go!</button></center>
     </form>   
    );
   }

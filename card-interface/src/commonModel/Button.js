@@ -27,7 +27,7 @@ class Button extends React.Component{
 
     render(){
         return(
-            <button onclick = {()=>{this.props.handleOnButton()}}>{this.props.message}</button>
+            <button type="button" onclick = {()=>{this.props.handleOnButton()}}>{this.props.message}</button>
         )
     }
 
