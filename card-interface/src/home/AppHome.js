@@ -3,8 +3,8 @@ import * as jsonSourceUsers from '../sources/users.json';
 import * as jsonSourceCards from '../sources/cards.json';
 
 import User from '../commonModel/User/User'
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+
+import { connect } from 'react-redux';
 import CardSide from './components/cardSide/CardSide'
 
 
@@ -18,13 +18,14 @@ class AppHome extends Component{
         
 
         this.state={
-            currentUser_id:"4",
+            session : this.props.session,
+            //currentUser_id:this.session.userId,
             currentUser_surname:"Dimitri",
             currentUser_lastname:"Crackers",
             currentUser_username:"dimcracks",
             currentUser_pwd:"coucou",
             currentUser_money:"1000", 
-            card_list:temp_card_list.cards,
+            card_list:temp_card_list,
             
         };
        
@@ -38,7 +39,7 @@ class AppHome extends Component{
                 </div>
                 <div className="col-md-4 col-lg-4" >
                 <User
-                        id={this.state.currentUser_id}
+                        id={this.state.session.userId}
                         surname={this.state.currentUser_surname}
                         lastname={this.state.currentUser_lastname}
                         username={this.state.currentUser_username}
@@ -46,7 +47,7 @@ class AppHome extends Component{
                         money={this.state.currentUser_money}
                     />
                 <CardSide
-                        cards ={this.state.card_list}
+                        cards ={this.state.card_list.cards}
                 />
                 </div>
                 <div className="col-md-4 col-lg-4" >
@@ -56,4 +57,12 @@ class AppHome extends Component{
         )
     };
 }
-export default AppHome;
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      session: state.sessionReducer.session
+    }
+  };
+
+
+export default connect(mapStateToProps)(AppHome);

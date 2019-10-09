@@ -14,9 +14,11 @@ import globalReducer from './reducers';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
-const sessionUser = new SessionUser;
+
 
 const store=createStore(globalReducer);
+const session = new SessionUser();
+//sessionUser.initSession();
 
 //extends the object Component
 class App extends Component {
@@ -28,7 +30,7 @@ class App extends Component {
         
         //creation of an initial state, a json object
         this.state = {
-            
+            session:session
         }; 
     }
 

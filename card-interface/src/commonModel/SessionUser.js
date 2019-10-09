@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {openSession} from '../actions'
+
+import { connect } from 'react-redux';
 //import User from './User'
 
 class SessionUser extends React.Component{
@@ -7,16 +10,20 @@ class SessionUser extends React.Component{
 
         this.state = {
             login : 0,
-            id      : 0
+            userId      : 0
         };
         
-        this.openSession = this.openSession.bind(this);
+        this.openSessionUser    =   this.openSessionUser.bind(this);
+        //this.initSession    =   this.initSession.bind(this);
 
     }
 
-    openSession(pLogin,pID){
+    
+
+    openSessionUser(pLogin,pID){
         this.state.login = pLogin;
-        this.state.id   = pID;
+        this.state.userId   = pID;
+        //this.props.dispatch(openSession(this.props.session));
     }
 
 }
