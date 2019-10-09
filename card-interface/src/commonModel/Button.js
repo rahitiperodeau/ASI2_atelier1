@@ -18,6 +18,10 @@ class Button extends React.Component{
               break;
             case 'SELL_CARD':
                 new_order.userId=uId;
+                console.log('userId:');
+                console.log(uId);
+                console.log('cardId:');
+                console.log(cId);
                 new_order.cardId=cId;
                 console.log('We sell a card');
                 axios.post("http://127.0.0.1:8082/sell",new_order);
@@ -30,7 +34,7 @@ class Button extends React.Component{
 
     render(){
         return(
-            <button type="button" onClick = {()=>{this.handleOnButton(this.props.idUser,this.props.idCard)}}>{this.props.message}</button>
+            <button type="button" onClick = {()=>{/*this.handleOnButton(this.props.idUser,this.props.idCard)*/this.handleOnButton(6,7)}}>{this.props.message}</button>
         )
     }
 

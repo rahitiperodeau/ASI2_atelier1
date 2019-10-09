@@ -3,7 +3,10 @@ import Button from '../../Button'
 
 class InfoCard extends Component {
     constructor(props) {
-        super(props);        
+        super(props);  
+        this.state={
+            idCard:this.props.idCard,
+        }      
     }
   
 
@@ -26,6 +29,8 @@ class InfoCard extends Component {
                         </div>
                     </div>
                 </div>
+
+                <div id="CardId">{this.props.idCard}</div>
 
                 <div className="content">
                     <i className="heart outline icon"></i><span id="cardHPId"> HP {this.props.hp}</span> 
