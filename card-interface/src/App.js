@@ -7,7 +7,7 @@ import AppStore from './store/store'
 
 import SessionUser from './commonModel/SessionUser'
 import {Provider} from 'react-redux';
-
+import User from './commonModel/User/User'
 import{ createStore } from'redux';
 
 import globalReducer from './reducers';
@@ -17,9 +17,11 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 const nSession = new SessionUser();
+const nUser    = new User()
 nSession.state.login = "coucou cams"
 const initialStore = {
-                        sessionReducer : nSession
+                        sessionReducer : nSession,
+                        user2Reducer    : nUser
                       }
 
 const store=createStore(globalReducer,initialStore);

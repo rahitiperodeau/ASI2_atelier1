@@ -6,6 +6,9 @@ import Button from '../commonModel/Button'
 import { connect } from 'react-redux';
 import CardSide from './components/cardSide/CardSide'
 
+import {userConnection} from '../actions'
+
+var axios=require('axios') ;
 
 class AppHome extends Component{
     constructor(props){
@@ -18,32 +21,54 @@ class AppHome extends Component{
 
         this.state={
             
-            //currentUser_id:this.session.userId,
-            currentUser_surname:"Dimitri", // 
-            currentUser_lastname:"Crackers",
-            currentUser_username:"dimcracks",
-            currentUser_pwd:"coucou",
-            currentUser_money:"1000", 
+            
             card_list:temp_card_list,
             
         };
+
+        this.getUser = this.getUser.bind(this);
        
     }
 
+    getUser(uId){
+        let url = 'http://127.0.0.1:8082/user/'+uId;
+        let self = this;
+        let usrTemp ;
+        usrTemp = new User();
+        axios.get(url).then(function(response){
+            console.log(response.data)
+            usrTemp.initialiseUser(response.data);
+
+            self.props.dispatch(userConnection(usrTemp));
+          
+        }).catch(function(err){
+            console.log(err);
+        });
+        
+            
+            
+        
+        //console.log(usrTemp);
+        //return usrTemp;
+        }
+
     render(){
+        let usr;
+        this.getUser(this.props.session.state.userId);
         return(
             <div>
                 <div className="container-fluid">
                     <h1>Welcome to your card manager</h1>
                 </div>
                 <div className="col-md-4 col-lg-4" >
+                {console.log(this.props)}
                 <User
-                        id = {0}
-                        surname={this.props.session.state.login}
-                        lastname={this.state.currentUser_lastname}
-                        username={this.state.currentUser_username}
-                        pwd={this.state.currentUser_pwd}
-                        money={this.state.currentUser_money}
+                        id = {this.props.user.state.id}
+                        surname={this.props.user.state.surname}
+                        lastname={this.props.user.state.lastname}
+                        username={this.props.user.state.username}
+                        money={this.props.user.state.money}
+
                     />
                 <CardSide
                         cards ={this.state.card_list.cards}
@@ -66,7 +91,8 @@ class AppHome extends Component{
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      session: state.sessionReducer
+      session: state.sessionReducer,
+      user:     state.user2Reducer
     }
   };
 

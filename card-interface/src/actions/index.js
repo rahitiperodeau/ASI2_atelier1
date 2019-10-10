@@ -14,6 +14,14 @@ export const openSession=(session_obj)=>{
     };
 }
 
+export const userConnection=(user_obj)=>{
+    return {
+        type: 'USER_CONNECTED',
+        obj:user_obj
+        
+    };
+}
+
 
 
 
