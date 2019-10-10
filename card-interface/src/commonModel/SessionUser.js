@@ -9,8 +9,8 @@ class SessionUser extends React.Component{
         super(props);
 
         this.state = {
-            login : 0,
-            userId      : 0
+            userId      : 0,
+            login       : "john"
         };
         
         this.openSessionUser    =   this.openSessionUser.bind(this);

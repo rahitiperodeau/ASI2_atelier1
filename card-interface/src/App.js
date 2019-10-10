@@ -16,8 +16,13 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 
-const store=createStore(globalReducer);
-const session = new SessionUser();
+const nSession = new SessionUser();
+nSession.state.login = "coucou cams"
+const initialStore = {
+                        sessionReducer : nSession
+                      }
+
+const store=createStore(globalReducer,initialStore);
 //sessionUser.initSession();
 
 //extends the object Component
@@ -30,7 +35,6 @@ class App extends Component {
         
         //creation of an initial state, a json object
         this.state = {
-            session:session
         }; 
     }
 

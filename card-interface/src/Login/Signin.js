@@ -31,33 +31,33 @@ class Signin extends Component {
     processInput(pLogin,pPwd){
 
 
-        let url = 'http://127.0.0.1:8082/authID?login=' + pLogin + '&pwd=' + pPwd ;
-        console.log(this.state.login);
-        let vSessionopen = 0 ;
-        axios.get(url)
-        .then(function (response) {
-            
-            if (response.data >0){
-                //console.log(test);
-                vSessionopen = 1;
-                
-
-            }else{
-                alert("Password or login incorrect please try-again or send an email to it@cpe.fr")
+        let self = this ;
+        let vCurrentSession = this.props.session ;
+        axios.get('http://localhost:8082/authID', {
+            params: {
+              login: pLogin,
+              pwd : pPwd
             }
-             
-
+          })
+          .then(function (response) {
+              if (response.data > 0){
+                vCurrentSession.state.login = pLogin;
+                vCurrentSession.state.userId = response.data;
+                self.props.dispatch(openSession(vCurrentSession));
+                self.props.history.push('/home')
+              }else{
+                alert("the username or password is incorrect, plese try again or contact it@cpe.fr")
+              }
+              
           })
           .catch(function (error) {
-            // handle error
             console.log(error);
           })
+          .finally(function () {
+            // always executed
+          });  
 
-        if(vSessionopen == 1){
-            this.state.openSessionUser(pLogin,response.data);
-            this.props.dispatch(openSession(this.props.session));
-            window.location.href = '/home';
-        }
+        
     }
 
 
@@ -67,16 +67,26 @@ class Signin extends Component {
 
     console.log(this.state.login);
     return (
+      <div>
+      <div>
+        {this.props.session.state.login}
+      </div>
       <SigninInfo
           processInput  = {this.processInput}
           signinImg     = {UserImg}
       />
+      </div>
    );
   }
 
   
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    session: state.sessionReducer
+  }
+};
 
 //export the current classes in order to be used outside
-export default connect()(Signin);
+export default connect(mapStateToProps)(Signin);

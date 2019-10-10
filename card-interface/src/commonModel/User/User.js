@@ -1,5 +1,4 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
 import UserInfo from './components/UserInfo'
 
 class User extends React.Component{

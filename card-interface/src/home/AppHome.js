@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import * as jsonSourceUsers from '../sources/users.json';
 import * as jsonSourceCards from '../sources/cards.json';
 
 import User from '../commonModel/User/User'
-
+import Button from '../commonModel/Button'
 import { connect } from 'react-redux';
 import CardSide from './components/cardSide/CardSide'
 
@@ -18,9 +17,9 @@ class AppHome extends Component{
         
 
         this.state={
-            session : this.props.session,
+            
             //currentUser_id:this.session.userId,
-            currentUser_surname:"Dimitri",
+            currentUser_surname:"Dimitri", // 
             currentUser_lastname:"Crackers",
             currentUser_username:"dimcracks",
             currentUser_pwd:"coucou",
@@ -39,8 +38,8 @@ class AppHome extends Component{
                 </div>
                 <div className="col-md-4 col-lg-4" >
                 <User
-                        id={this.state.session.userId}
-                        surname={this.state.currentUser_surname}
+                        id = {0}
+                        surname={this.props.session.state.login}
                         lastname={this.state.currentUser_lastname}
                         username={this.state.currentUser_username}
                         pwd={this.state.currentUser_pwd}
@@ -53,14 +52,21 @@ class AppHome extends Component{
                 <div className="col-md-4 col-lg-4" >
                     
                 </div>
+                <div>
+                   <Button 
+                            actionButton="GO_STORE" 
+                            message="Go to market"
+                            params = {this} // we send this to be redirect 
+                    />
                 </div>
+            </div>
         )
     };
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      session: state.sessionReducer.session
+      session: state.sessionReducer
     }
   };
 

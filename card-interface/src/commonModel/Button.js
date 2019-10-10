@@ -9,7 +9,7 @@ class Button extends React.Component{
 
     }
 
-    handleOnButton(){
+    handleOnButton(params){
         
         let actionButton = this.props.actionButton;
         switch (actionButton) {
@@ -18,7 +18,13 @@ class Button extends React.Component{
               break;
             case 'SELL_CARD':
                 console.log('We sell a card');
-                break
+                break;
+
+            case 'GO_STORE':
+                    params.props.history.push('/market');
+                    break;
+
+            
             
             default:
               console.log('Sorry, no action defined');
@@ -27,7 +33,7 @@ class Button extends React.Component{
 
     render(){
         return(
-            <button type="button" onclick = {()=>{this.props.handleOnButton()}}>{this.props.message}</button>
+            <button type="button" onClick = {()=>{this.handleOnButton(this.props.params)}}>{this.props.message}</button>
         )
     }
 
