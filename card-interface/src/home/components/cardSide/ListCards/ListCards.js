@@ -31,14 +31,15 @@ class ListCards extends Component {
         for(var i=0;i<this.props.cards.length;i++){
             
             idCard = this.props.cards[i].id
-
+            console.log("idCard dans ListCards:"+idCard);
             array_render.push(     
                 <CardLabel 
                     handleOnCardSelected    = {this.handleOnCardSelected}
                     name                    = {this.props.cards[i].name}
-                    key                     = {i}
+                    idKey                     = {i}
                     card                    = {this.props.cards[i]}
                     idCard                  = {idCard}
+                    idCard2 ={this.props.card[i].id}
                     idToDisplay             = {this.state.selected_card_id} //allows our CardLabelClass to Display all Info from only the card selected
                 />
             )

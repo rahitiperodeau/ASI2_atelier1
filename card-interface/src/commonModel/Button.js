@@ -17,14 +17,20 @@ class Button extends React.Component{
               console.log('We buy a card');
               break;
             case 'SELL_CARD':
-                new_order.userId=uId;
+                new_order.user_id=uId;
                 console.log('userId:');
                 console.log(uId);
                 console.log('cardId:');
                 console.log(cId);
-                new_order.cardId=cId;
+                new_order.card_id=cId;
                 console.log('We sell a card');
-                axios.post("http://127.0.0.1:8082/sell",new_order);
+                axios.post("http://127.0.0.1:8082/sell",new_order)
+                .then(function(data){
+                    console.log(data);
+                })
+                .catch(function(err){
+                    console.log(err);
+                });
                 break
             
             default:
@@ -34,7 +40,7 @@ class Button extends React.Component{
 
     render(){
         return(
-            <button type="button" onClick = {()=>{/*this.handleOnButton(this.props.idUser,this.props.idCard)*/this.handleOnButton(6,7)}}>{this.props.message}</button>
+            <button type="button" onClick = {()=>{this.handleOnButton(this.props.idUser,this.props.idCard)}}>{this.props.message}</button>
         )
     }
 

@@ -7,19 +7,21 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import globalReducer from '../reducers';
 import CardSide from './components/cardSide/CardSide'
-
+import Axios from 'axios';
+const axios=require('axios');
 const store =createStore(globalReducer);
 
 class AppHome extends Component{
     constructor(props){
         super(props);
-
+        
+        
         let temp_card_list;
-	let temp_user_list;
+	    let temp_user_list;
         
         temp_card_list=jsonSourceCards.default;
         temp_user_list=jsonSourceUsers.default;
-
+        
         this.state={
             currentUser_id:"4",
             currentUser_surname:"Dimitri",
@@ -29,9 +31,22 @@ class AppHome extends Component{
             currentUser_money:"1000", 
 	        currUser:temp_user_list.users[0],
             card_list:temp_card_list.cards,
+            current_user:{},
             
         };
        
+    }
+
+    getUser(uId){
+        let url = 'http://127.0.0.1:8082/user/'+uId;
+        axios.get(url).then(function(response){
+            let temp_user=response.data;
+            console.log(temp_user);
+            this.state.current_user=temp_user;
+        }).catch(function(err){
+            console.log(err);
+        });
+        
     }
 
     render(){
@@ -54,6 +69,13 @@ class AppHome extends Component{
                         username={this.state.currUser.login}
                         pwd={this.state.currUser.pwd}
                         money={this.state.currUser.money}
+                        /*id={this.state.current_user.id}
+                        surname={this.state.current_user.surname}
+                        lastname={this.state.current_user.lastname}
+                        username={this.state.current_user.login}
+                        pwd={this.state.current_user.pwd}
+                        money={this.state.current_user.account}*/
+                        
                     />
                 <CardSide
                         cards ={this.state.card_list}

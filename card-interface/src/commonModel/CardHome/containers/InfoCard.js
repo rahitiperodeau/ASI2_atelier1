@@ -6,6 +6,7 @@ class InfoCard extends Component {
         super(props);  
         this.state={
             idCard:this.props.idCard,
+            
         }      
     }
   
@@ -56,9 +57,9 @@ class InfoCard extends Component {
                 </div>
 
                 <Button
-                    message = 'Sell'
+                    message = 'SELL_CARD'
                     actionButton = "SELL_CARD"
-                    idCard      = {this.props.idCard}
+                    idCard = {this.state.idCard}
                     idUser = {this.props.id}
                 />
             

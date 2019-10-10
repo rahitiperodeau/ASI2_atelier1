@@ -4,6 +4,7 @@ import UserInfo from '../commonModel/User/components/UserInfo'
 import UserImg from '../sources/img/User.png';
 import SigninInfo from './components/SigninInfo';
 import SessionUser from '../commonModel/SessionUser';
+import AppHome from '../home/AppHome';
 //import './lib/bootstrap-3.3.7-dist/css/bootstrap.min.css';
 const axios=require('axios');
 //extends the object Component
@@ -14,7 +15,8 @@ class Signin extends Component {
         //creation of an initial state, a json object
         this.state = {  
             login:"",
-            pwd:"",           
+            pwd:"",
+            user_id:0,           
         };
         //binding of the function given the ability to use this
         this.processInput=this.processInput.bind(this); 
@@ -26,8 +28,10 @@ class Signin extends Component {
         let urlBis ='http://127.0.0.1:8082/auth?login=' + pLogin + '&pwd=' + pPwd ;
         axios.get(url)
         .then(function (response) {
-            
+            console.log(response.data)
             if (response.data >0){
+                let appHome = new AppHome();
+                appHome.getUser(response.data);
                 let sessionUser=new SessionUser();
                 sessionUser.openSession(pLogin,response.data);//response.data=id
                 window.location.href = '/home';
@@ -42,7 +46,7 @@ class Signin extends Component {
             // handle error
             console.log(error);
           })
-}
+      }
 
 
   render() {
