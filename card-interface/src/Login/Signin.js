@@ -65,7 +65,7 @@ class Signin extends Component {
     // return the react specific virtual dom
 
 
-   // console.log(this.state.login);
+
     return (
       <div>
       <div>

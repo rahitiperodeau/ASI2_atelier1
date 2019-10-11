@@ -26,6 +26,7 @@ class CardLabel extends Component {
                       card    = {this.props.card}
                       idCard  = {this.props.idCard}
                       user_id={this.props.user_id}
+
                   />;
     }
      return displayCard

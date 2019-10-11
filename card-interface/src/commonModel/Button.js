@@ -1,16 +1,44 @@
 import React from 'react';
 import { switchCase } from '@babel/types';
+
+import { GetCardsList } from '../actions';
+
+import { connect } from 'react-redux';
+
+var axios=require('axios') ;
+
+
 import { connect } from 'react-redux';
 import {userConnection} from '../actions';
 import User from './User/User';
 const axios=require('axios') ;
+
 class Button extends React.Component{
     constructor(props){
         super(props);
             
         this.handleOnButton = this.handleOnButton.bind(this);
-        this.getUserCardList = this.getUserCardList.bind(this);
+
+        this.getCardsList=this.getCardsList.bind(this);
+              this.getUserCardList = this.getUserCardList.bind(this);
+
+
     }
+
+      
+    getCardsList(){
+
+
+        let self = this ;
+    
+        axios.get('http://localhost:8082/cards') 
+          .then(function (response) {
+                self.props.dispatch(GetCardsList(response.data));
+              }  )
+            }
+
+
+   
 
     getUserCardList(uId){
         let self=this;
@@ -58,24 +86,31 @@ class Button extends React.Component{
                 break;
 
             case 'GO_STORE':
+                        this.getCardsList();
+
                     params.props.history.push('/market');
                     break;
 
             
             
             default:
-              //console.log('Sorry, no action defined');
+
+              console.log('Sorry, no action defined');
+
         }
     }
 
     render(){
         return(
+
             <button type="button" onClick = {()=>{this.handleOnButton(this.props.params,this.props.user_id,this.props.idCard)}}>{this.props.message}</button>
+
         )
     }
 
    
 }
- 
+
   
 export default connect() (Button);
+

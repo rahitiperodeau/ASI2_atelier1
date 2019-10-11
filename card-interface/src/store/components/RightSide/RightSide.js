@@ -17,7 +17,9 @@ class RightSide extends Component {
 
   render() {
 
-    if(this.props.card.id ==undefined){
+
+    if(this.props.card ==undefined){
+
         return <div></div>;
 }
      
@@ -28,7 +30,10 @@ class RightSide extends Component {
                     <h3 className="panel-title">{this.props.card.name} description</h3>
                 </div>
                 <div className="panel-body">
-                <Panel card = {this.props.card}/>
+
+                <Panel card = {this.props.card}
+user={this.props.user}/>
+
                 </div>
                </div>
     );
@@ -38,7 +43,9 @@ class RightSide extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      card: state.cardReducer
+
+      card: state.cardReducer.selected_card
+
     }
   };
 

@@ -38,7 +38,9 @@ handleOnCardSelected(Card_obj){
                         id={this.props.card.id} 
                     />
                     <Visual 
-                        src={this.props.card.visual_src} 
+
+                        src={this.props.card.imgUrl} 
+
                     />
                 </div>
             </div>

@@ -27,6 +27,7 @@ class ListCards extends Component {
 
         let array_render=[];
         let idCard;
+
         if ( this.props.cards!==undefined){
             for(var i=0;i<this.props.cards.length;i++){
             
@@ -51,6 +52,7 @@ class ListCards extends Component {
         }
         
         
+
         return array_render;
     }
     

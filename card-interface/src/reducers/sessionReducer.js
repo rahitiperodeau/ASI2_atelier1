@@ -1,5 +1,5 @@
 const sessionReducer= (state={},action) => {
-    //console.log(action);
+
     switch (action.type) {
         case 'OPEN_SESSION':
             return action.obj;

@@ -55,6 +55,7 @@ class InfoCard extends Component {
                     actionButton = "SELL_CARD"
                     idCard      = {this.props.idCard}
                     user_id={this.props.user_id}
+
                 />
             
 
