@@ -24,4 +24,10 @@ export const userConnection=(user_obj)=>{
 
 
 
-
+export const GetCardsList=(card_obj)=>{
+    return {
+        type: 'GET_CARDS_LIST',
+        obj:card_obj
+        
+    };
+}

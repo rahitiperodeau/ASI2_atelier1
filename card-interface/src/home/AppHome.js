@@ -27,18 +27,19 @@ class AppHome extends Component{
         };
 
         this.getUser = this.getUser.bind(this);
-       
+        this.getUser(this.props.session.state.userId);
+
     }
 
     getUser(uId){
         let url = 'http://127.0.0.1:8082/user/'+uId;
         let self = this;
         let usrTemp ;
-        usrTemp = new User();
+        //usrTemp = new User();
         axios.get(url).then(function(response){
             console.log(response.data)
-            usrTemp.initialiseUser(response.data);
-
+            //usrTemp.initialiseUser(response.data);
+            usrTemp=response.data;
             self.props.dispatch(userConnection(usrTemp));
           
         }).catch(function(err){
@@ -54,7 +55,11 @@ class AppHome extends Component{
 
     render(){
         let usr;
-        this.getUser(this.props.session.state.userId);
+
+        if(this.props.user === undefined){
+            return (<div></div>);
+        }
+
         return(
             <div>
                 <div className="container-fluid">
@@ -63,11 +68,11 @@ class AppHome extends Component{
                 <div className="col-md-4 col-lg-4" >
                 {console.log(this.props)}
                 <User
-                        id = {this.props.user.state.id}
-                        surname={this.props.user.state.surname}
-                        lastname={this.props.user.state.lastname}
-                        username={this.props.user.state.username}
-                        money={this.props.user.state.money}
+                        id = {this.props.user.id}
+                        surname={this.props.user.surName}
+                        lastname={this.props.user.lastName}
+                        username={this.props.user.login}
+                        money={this.props.user.account}
 
                     />
                 <CardSide
@@ -92,7 +97,7 @@ class AppHome extends Component{
 const mapStateToProps = (state, ownProps) => {
     return {
       session: state.sessionReducer,
-      user:     state.user2Reducer
+      user:     state.user2Reducer.user
     }
   };
 

@@ -5,7 +5,7 @@ import * as jsonSource from '../sources/cards.json';
 import { connect } from 'react-redux';
 import LeftSide from './components/LeftSide/LeftSide';
 import RightSide from './components/RightSide/RightSide';
-
+import User from '../commonModel/User/User.js'
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import globalReducer from '../reducers';
@@ -17,15 +17,11 @@ class Main extends Component {
     //class constructor whith given properties
     constructor(props) {
         super(props);
-        let temp_cards_list;
-        
-        temp_cards_list=jsonSource.default;
-        console.log(temp_cards_list);
+   
         
         
         //creation of an initial state, a json object
         this.state = {
-            cards_list:temp_cards_list,
             selected_card_id:0,
         }; 
     }
@@ -33,14 +29,24 @@ class Main extends Component {
     
   //render function use to update the virtual dom
   render() {
-    
+      if(this.props.cards_list=== undefined){
+          return (<div></div>);
+      }
+
     return (
-    <Provider store={store} >
+    
       <div className="container-fluid">
         <div className="row">
             <h1> Welcome to card shop</h1>
         </div>
         <div className="row">
+                  <User
+                       id = {this.props.user.id}
+                       surname={this.props.user.surName}
+                       lastname={this.props.user.lastName}
+                       username={this.props.user.login}
+                       money={this.props.user.account}
+                    />
         <thead>
                         <tr>
                             <th>Cards List</th>
@@ -52,7 +58,7 @@ class Main extends Component {
                                   <div className="col-md-4 col-lg-4"  align="left">
                
                                     <LeftSide 
-                                        cards={this.state.cards_list}
+                                        cards={this.props.cards_list}
                                     />
                                   </div>
                             </th>
@@ -61,7 +67,7 @@ class Main extends Component {
                             <th>
                                 <div className="col-md-4 col-lg-4"  align="right">
           
-                                     <RightSide  />
+                                     <RightSide user={this.props.user} />
                                  </div> 
                             </th>
                         </tr>
@@ -70,14 +76,15 @@ class Main extends Component {
         
         </div>
       </div>
-    </Provider>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      session: state.sessionReducer
+      session: state.sessionReducer,
+      cards_list: state.cardReducer.cardlist,
+      user: state.user2Reducer.user
     }
   };
 //export the current classes in order to be used outside

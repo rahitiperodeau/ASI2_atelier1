@@ -1,13 +1,32 @@
 import React from 'react';
 import { switchCase } from '@babel/types';
+import { GetCardsList } from '../actions';
+
+import { connect } from 'react-redux';
+
+var axios=require('axios') ;
 
 class Button extends React.Component{
     constructor(props){
         super(props);
             
         this.handleOnButton = this.handleOnButton.bind(this);
+        this.getCardsList=this.getCardsList.bind(this);
 
     }
+
+      
+    getCardsList(){
+
+
+        let self = this ;
+    
+        axios.get('http://localhost:8082/cards') 
+          .then(function (response) {
+                self.props.dispatch(GetCardsList(response.data));
+              }  )
+            }
+
 
     handleOnButton(params){
         
@@ -21,6 +40,7 @@ class Button extends React.Component{
                 break;
 
             case 'GO_STORE':
+            this.getCardsList();
                     params.props.history.push('/market');
                     break;
 
@@ -42,4 +62,5 @@ class Button extends React.Component{
 
   
   
-  export default Button;
+
+export default connect()(Button);

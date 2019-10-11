@@ -18,10 +18,11 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const nSession = new SessionUser();
 const nUser    = new User()
-nSession.state.login = "coucou cams"
+nSession.state.login = " cams"
 const initialStore = {
                         sessionReducer : nSession,
-                        user2Reducer    : nUser
+                        user2Reducer    : nUser,
+                        cardReducer :{}
                       }
 
 const store=createStore(globalReducer,initialStore);
