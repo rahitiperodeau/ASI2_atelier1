@@ -1,12 +1,31 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
 import UserInfo from './components/UserInfo'
 
 class User extends React.Component{
     constructor(props){
         super(props);
-            
 
+        this.state = {
+                    id : 0,
+                    username : "",
+                    surname:"",
+                    lastname:"",
+                    money:"",
+                    cardList:[]
+        }
+        
+        this.initialiseUser = this.initialiseUser.bind(this);
+
+    }
+
+    
+    initialiseUser(pUser){
+        this.state.id       = pUser.id;
+        this.state.username = pUser.login;
+        this.state.surname  = pUser.surName;
+        this.state.lastname = pUser.lastName;
+        this.state.money    = pUser.account;
+        this.state.cardList = pUser.cardList;
     }
 
     render(){

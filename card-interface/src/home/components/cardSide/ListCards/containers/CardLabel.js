@@ -22,9 +22,10 @@ class CardLabel extends Component {
     if ((this.props.idToDisplay) == this.props.idCard){
 
       displayCard= <Card
-                      idKey     = {this.props.idKey}
+                      key     = {this.props.key}
                       card    = {this.props.card}
                       idCard  = {this.props.idCard}
+                      user_id={this.props.user_id}
                   />;
     }
      return displayCard

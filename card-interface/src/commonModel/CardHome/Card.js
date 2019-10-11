@@ -19,8 +19,8 @@ class Card extends Component {
                         src         = {this.props.card.visual_src} 
                     />
                     <InfoCard 
-                        idCard      = {this.props.card.idCard}
-                        
+                        idCard      = {this.props.card.id}
+                        user_id={this.props.user_id}
                         description = {this.props.card.description}
                         family      = {this.props.card.family}
                         hp          = {Number(this.props.card.hp)}

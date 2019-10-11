@@ -1,15 +1,5 @@
 {"users":[
     {
-        "id": 6,
-        "login": "renaud",
-        "pwd": "renaud",
-        "account": 0.0,
-        "lastname": "Quatrelle",
-        "surname": "Renaud",
-        "email": "email_default",
-        "money": 2000
-    },
-    {
         "id":0,
         "surname":"Seraphin",
         "lastname":"Andrieux",
@@ -41,7 +31,6 @@
         "pwd":"coucou",
         "money":"400"
     }
-    
     ]
     
 

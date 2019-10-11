@@ -1,63 +1,92 @@
 import React, { Component } from 'react';
-import User from '../commonModel/User/User'
 import UserInfo from '../commonModel/User/components/UserInfo'
 import UserImg from '../sources/img/User.png';
-import SigninInfo from './components/SigninInfo';
-import SessionUser from '../commonModel/SessionUser';
-import AppHome from '../home/AppHome';
+import SigninInfo from './components/SigninInfo'
+
+import {openSession} from '../actions'
+
+import { connect } from 'react-redux';
+
+var axios=require('axios') ;
+
 //import './lib/bootstrap-3.3.7-dist/css/bootstrap.min.css';
-const axios=require('axios');
+
 //extends the object Component
 class Signin extends Component {
     //class constructor whith given properties
     constructor(props) {
         super(props);
         //creation of an initial state, a json object
-        this.state = {  
-            login:"",
-            pwd:"",
-            user_id:0,           
-        };
+       
         //binding of the function given the ability to use this
-        this.processInput=this.processInput.bind(this); 
+        this.processInput = this.processInput.bind(this); 
+        this.state = {  
+            //session : this.props.session,
+            login:"",
+            pwd:"",           
+        };
     }
+
+    
     processInput(pLogin,pPwd){
 
 
-        let url = 'http://127.0.0.1:8082/authID?login=' + pLogin + '&pwd=' + pPwd ;
-        let urlBis ='http://127.0.0.1:8082/auth?login=' + pLogin + '&pwd=' + pPwd ;
-        axios.get(url)
-        .then(function (response) {
-            console.log(response.data)
-            if (response.data >0){
-                let appHome = new AppHome();
-                appHome.getUser(response.data);
-                let sessionUser=new SessionUser();
-                sessionUser.openSession(pLogin,response.data);//response.data=id
-                window.location.href = '/home';
-
-            }else{
-                alert("Password or login incorrect please try-again or send an email to it@cpe.fr")
+        let self = this ;
+        let vCurrentSession = this.props.session ;
+        axios.get('http://localhost:8082/authID', {
+            params: {
+              login: pLogin,
+              pwd : pPwd
             }
-             
-
+          })
+          .then(function (response) {
+              if (response.data > 0){
+                vCurrentSession.state.login = pLogin;
+                vCurrentSession.state.userId = response.data;
+                self.props.dispatch(openSession(vCurrentSession));
+                self.props.history.push('/home')
+              }else{
+                alert("the username or password is incorrect, plese try again or contact it@cpe.fr")
+              }
+              
           })
           .catch(function (error) {
-            // handle error
             console.log(error);
           })
-      }
+          .finally(function () {
+            // always executed
+          });  
+
+        
+    }
 
 
   render() {
     // return the react specific virtual dom
+
+
+   // console.log(this.state.login);
     return (
+      <div>
+      <div>
+        {this.props.session.state.login}
+      </div>
       <SigninInfo
           processInput  = {this.processInput}
           signinImg     = {UserImg}
       />
+      </div>
    );
   }
+
+  
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    session: state.sessionReducer
+  }
+};
+
 //export the current classes in order to be used outside
-export default Signin;
+export default connect(mapStateToProps)(Signin);

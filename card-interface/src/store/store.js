@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import * as jsonSource from '../sources/cards.json';
 
+import { connect } from 'react-redux';
 import LeftSide from './components/LeftSide/LeftSide';
 import RightSide from './components/RightSide/RightSide';
 
@@ -74,5 +75,10 @@ class Main extends Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+      session: state.sessionReducer
+    }
+  };
 //export the current classes in order to be used outside
-export default Main;
+export default connect(mapStateToProps)(Main);

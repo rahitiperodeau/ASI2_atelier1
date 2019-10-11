@@ -5,12 +5,27 @@ import AppHome from './home/AppHome'
 import AppLogin from './Login/Signin'
 import AppStore from './store/store'
 
+import SessionUser from './commonModel/SessionUser'
+import {Provider} from 'react-redux';
+import User from './commonModel/User/User'
+import{ createStore } from'redux';
+
+import globalReducer from './reducers';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 
 
+const nSession = new SessionUser();
+const nUser    = new User()
+nSession.state.login = "coucou cams"
+const initialStore = {
+                        sessionReducer : nSession,
+                        user2Reducer    : nUser
+                      }
 
+const store=createStore(globalReducer,initialStore);
+//sessionUser.initSession();
 
 //extends the object Component
 class App extends Component {
@@ -22,28 +37,28 @@ class App extends Component {
         
         //creation of an initial state, a json object
         this.state = {
-            
         }; 
     }
 
-
+   
     
   //render function use to update the virtual dom
   render() {
     
     return (
 
-      
-          <Router>
-            <div>
-              
-              <hr />
-      
-              <Route exact path ="/"        component={AppLogin}  />
-              <Route  path      ="/home"    component={AppHome}   />
-              <Route  path      ="/market"  component={AppStore}  />
-            </div>
-          </Router>
+          <Provider store={store}>
+              <Router>
+                <div>
+                  
+                  <hr />
+          
+                  <Route exact path ="/"        component={AppLogin}  />
+                  <Route  path      ="/home"    component={AppHome}   />
+                  <Route  path      ="/market"  component={AppStore}  />
+                </div>
+              </Router>
+          </Provider>
         
                   
 
