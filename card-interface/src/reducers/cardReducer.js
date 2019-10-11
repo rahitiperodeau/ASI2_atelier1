@@ -1,3 +1,4 @@
+
 const cardReducer= (state={cardlist:[],selected_card:{}},action) => {
     //console.log(action);
     switch (action.type) {
@@ -5,6 +6,7 @@ const cardReducer= (state={cardlist:[],selected_card:{}},action) => {
             return {selected_card: action.obj,cardlist:state.cardlist};
             case 'GET_CARDS_LIST':
             return {cardlist: action.obj,selected_card:state.selected_card};;
+
     default:
       return state;
     }

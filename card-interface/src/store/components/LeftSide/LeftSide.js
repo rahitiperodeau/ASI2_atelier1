@@ -11,12 +11,16 @@ class LeftSide extends Component {
  getAllCardsRender(){
      let array_render=[];
      
+
      for(var i=0;i<this.props.cards.length;i++){
+
          
          array_render.push(
              <Card
                 key={i}
+
                 card={this.props.cards[i]}
+
                handleOnCardSelected={this.props.handleOnCardSelected}
              />
              );

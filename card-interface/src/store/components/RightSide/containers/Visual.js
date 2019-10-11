@@ -15,7 +15,9 @@ class Visual extends Component {
 
             <div class="ui fluid image">
                                                         
+
             <img id="cardImgId" class="ui centered image" height="25%" width="25%" src={this.props.card.imgUrl}/>
+
             </div>
 
             <table class="table">

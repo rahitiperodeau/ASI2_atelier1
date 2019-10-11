@@ -38,6 +38,9 @@ class CardSide extends Component {
         <div className="row">
             <div className="col-md-4 col-lg-4" >
                 <ListCards 
+
+                    user_id={this.props.user_id}
+
                     cards ={this.props.cards} //we send the card list 
                 />
             </div>

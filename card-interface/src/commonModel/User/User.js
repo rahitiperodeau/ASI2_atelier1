@@ -10,7 +10,9 @@ class User extends React.Component{
                     username : "",
                     surname:"",
                     lastname:"",
-                    money:""
+                    money:"",
+                    cardList:[]
+
         }
         
         this.initialiseUser = this.initialiseUser.bind(this);
@@ -19,19 +21,22 @@ class User extends React.Component{
 
     
     initialiseUser(pUser){
+
         this.setState(
             { 
                 id:pUser.id,
                 username:pUser.username,
                 surname:pUser.surname,
                 lastname:pUser.lastname,
-                money:pUser.money,      
+                money:pUser.money, 
+              cardList:pUser.cardList
             }
         );
         //this.state.username = pUser.login;
         //this.state.surname  = pUser.surName;
         //this.state.lastname = pUser.lastName;
         //this.state.money    = pUser.account;
+
     }
 
     render(){

@@ -27,23 +27,32 @@ class ListCards extends Component {
 
         let array_render=[];
         let idCard;
-     
-        for(var i=0;i<this.props.cards.length;i++){
-            
-            idCard = this.props.cards[i].id
 
-            array_render.push(     
-                <CardLabel 
-                    handleOnCardSelected    = {this.handleOnCardSelected}
-                    name                    = {this.props.cards[i].name}
-                    key                     = {i}
-                    card                    = {this.props.cards[i]}
-                    idCard                  = {idCard}
-                    idToDisplay             = {this.state.selected_card_id} //allows our CardLabelClass to Display all Info from only the card selected
-                />
-            )
-               
+        if ( this.props.cards!==undefined){
+            for(var i=0;i<this.props.cards.length;i++){
+            
+                idCard = this.props.cards[i].id
+    
+                array_render.push(     
+                    <CardLabel 
+                        handleOnCardSelected    = {this.handleOnCardSelected}
+                        name                    = {this.props.cards[i].name}
+                        key                     = {i}
+                        card                    = {this.props.cards[i]}
+                        idCard                  = {idCard}
+                        user_id={this.props.user_id}
+                        idToDisplay             = {this.state.selected_card_id} //allows our CardLabelClass to Display all Info from only the card selected
+                    />
+                )
+                   
+            }
         }
+        else{
+            console.log("card list undefined");
+        }
+        
+        
+
         return array_render;
     }
     

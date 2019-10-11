@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {userConnection} from '../../../../actions'
 import { connect } from 'react-redux';
 import User from '../../../../commonModel/User/User'
@@ -50,15 +51,19 @@ class Buy extends Component {
         console.log(error);
       });
 }
+
   
   render() {
     return (
-               
+
       <button type = "button" onClick={this.click}>Buy </button>                                                   
+
  
     );
   }
 }
 
 
+
 export default connect()(Buy);
+

@@ -1,9 +1,85 @@
 {"cards":[
-    {"id":1,"name":"Celine","description":"Une sacre boule d'energie, ne pas se frotter a elle","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defense":"60","attack":"50","price":"500"},
-    {"id":2,"name":"Seraph","description":"Cool et passif, attention a ne pas rester trop longtemps en sa compagnie","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defense":"60","attack":"50","price":"500"},
-    {"id":3,"name":"Rahiti","description":"Fin nageur, tres utile dans un milieu aquatique","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defense":"60","attack":"50","price":"500"},
-    {"id":10,"name":"Camille","description":"Rigolote est son deuxieme prenom ! Attention a ses piques","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defense":"60","attack":"50","price":"500"},
-    {"id":8,"name":"Mr Muscle","description":"Un diamand brute de pomme, tout pour le muscle est son credo","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defense":"60","attack":"50","price":"500"},
-    {"id":4,"name":"Le Marsupilami","description":"houba houba houba, houbaaaaa","visual_src":"https://www.robot-advance.com/EN/ori-wowwee-mip-white-robot-1281_1613.jpg","family":"Feu","hp":"200","energy":"300","defense":"60","attack":"50","price":"500"}
-    ]
-}
+
+    {
+        "id": 9,
+        "name": "name2",
+        "description": "description2",
+        "family": "family2",
+        "affinity": "affinity2",
+        "imgUrl": "http://medias.3dvf.com/news/sitegrab/gits2045.jpg",
+        "smallImgUrl": "https://cdn.animenewsnetwork.com/thumbnails/fit600x1000/cms/feature/89858/05.jpg",
+        "energy": 100.0,
+        "hp": 73.91644,
+        "defence": 61.19722,
+        "attack": 2.620989,
+        "price": 111.0,
+        "user": 6,
+        "store": null
+    },
+    {
+        "id": 8,
+        "name": "name4",
+        "description": "description4",
+        "family": "family4",
+        "affinity": "affinity4",
+        "imgUrl": "http://medias.3dvf.com/news/sitegrab/gits2045.jpg",
+        "smallImgUrl": "https://cdn.animenewsnetwork.com/thumbnails/fit600x1000/cms/feature/89858/05.jpg",
+        "energy": 100.0,
+        "hp": 31.391483,
+        "defence": 74.24901,
+        "attack": 34.360046,
+        "price": 111.0,
+        "user": 6,
+        "store": null
+    },
+    {
+        "id": 10,
+        "name": "name0",
+        "description": "description0",
+        "family": "family0",
+        "affinity": "affinity0",
+        "imgUrl": "http://medias.3dvf.com/news/sitegrab/gits2045.jpg",
+        "smallImgUrl": "https://cdn.animenewsnetwork.com/thumbnails/fit600x1000/cms/feature/89858/05.jpg",
+        "energy": 100.0,
+        "hp": 38.251816,
+        "defence": 48.05537,
+        "attack": 69.9792,
+        "price": 111.0,
+        "user": 6,
+        "store": null
+    },
+    {
+        "id": 7,
+        "name": "name0",
+        "description": "description0",
+        "family": "family0",
+        "affinity": "affinity0",
+        "imgUrl": "http://medias.3dvf.com/news/sitegrab/gits2045.jpg",
+        "smallImgUrl": "https://cdn.animenewsnetwork.com/thumbnails/fit600x1000/cms/feature/89858/05.jpg",
+        "energy": 100.0,
+        "hp": 89.86215,
+        "defence": 94.20331,
+        "attack": 86.86426,
+        "price": 111.0,
+        "user": 6,
+        "store": null
+    },
+    {
+        "id": 11,
+        "name": "name0",
+        "description": "description0",
+        "family": "family0",
+        "affinity": "affinity0",
+        "imgUrl": "http://medias.3dvf.com/news/sitegrab/gits2045.jpg",
+        "smallImgUrl": "https://cdn.animenewsnetwork.com/thumbnails/fit600x1000/cms/feature/89858/05.jpg",
+        "energy": 100.0,
+        "hp": 13.731175,
+        "defence": 49.883335,
+        "attack": 19.828987,
+        "price": 111.0,
+        "user": 6,
+        "store": null
+    }
+    
+    ]}
+

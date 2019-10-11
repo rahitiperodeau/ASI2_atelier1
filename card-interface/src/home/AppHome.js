@@ -1,14 +1,33 @@
 import React, { Component } from 'react';
 import * as jsonSourceCards from '../sources/cards.json';
 
+import globalReducer from '../reducers';
+
 import User from '../commonModel/User/User'
 import Button from '../commonModel/Button'
 import { connect } from 'react-redux';
 import CardSide from './components/cardSide/CardSide'
 
+
 import {userConnection} from '../actions'
 
-var axios=require('axios') ;
+
+import SessionUser from '../commonModel/SessionUser';
+
+import{ createStore } from'redux';
+import {Provider} from 'react-redux';
+const axios=require('axios') ;
+
+/*const nSession = new SessionUser();
+const nUser    = new User()
+nSession.state.login = "coucou cams"
+const initialStore = {
+                        sessionReducer : nSession,
+                        user2Reducer    : nUser
+                      }
+
+const store=createStore(globalReducer,initialStore);*/
+
 
 class AppHome extends Component{
     constructor(props){
@@ -35,6 +54,7 @@ class AppHome extends Component{
         let url = 'http://127.0.0.1:8082/user/'+uId;
         let self = this;
         let usrTemp ;
+
         //usrTemp = new User();
         axios.get(url).then(function(response){
             console.log(response.data)
@@ -44,6 +64,7 @@ class AppHome extends Component{
           
         }).catch(function(err){
             console.log(err);
+
         });
         
             
@@ -54,6 +75,7 @@ class AppHome extends Component{
         }
 
     render(){
+
         let usr;
 
         if(this.props.user === undefined){
@@ -61,11 +83,13 @@ class AppHome extends Component{
         }
 
         return(
+
             <div>
                 <div className="container-fluid">
                     <h1>Welcome to your card manager</h1>
                 </div>
                 <div className="col-md-4 col-lg-4" >
+
                 {console.log(this.props)}
                 <User
                         id = {this.props.user.id}
@@ -77,6 +101,9 @@ class AppHome extends Component{
                     />
                 <CardSide
                         cards ={this.state.card_list.cards}
+                  user_id = {this.props.user.id}
+
+              
                 />
                 </div>
                 <div className="col-md-4 col-lg-4" >
@@ -90,6 +117,7 @@ class AppHome extends Component{
                     />
                 </div>
             </div>
+
         )
     };
 }
@@ -97,7 +125,9 @@ class AppHome extends Component{
 const mapStateToProps = (state, ownProps) => {
     return {
       session: state.sessionReducer,
+
       user:     state.user2Reducer.user
+
     }
   };
 

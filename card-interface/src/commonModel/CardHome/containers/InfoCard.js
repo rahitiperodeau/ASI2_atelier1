@@ -52,7 +52,10 @@ class InfoCard extends Component {
 
                 <Button
                     message = 'Sell'
+                    actionButton = "SELL_CARD"
                     idCard      = {this.props.idCard}
+                    user_id={this.props.user_id}
+
                 />
             
 
