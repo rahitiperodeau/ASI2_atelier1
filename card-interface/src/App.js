@@ -7,16 +7,26 @@ import AppStore from './store/store'
 
 import SessionUser from './commonModel/SessionUser'
 import {Provider} from 'react-redux';
-
+import User from './commonModel/User/User'
 import{ createStore } from'redux';
 
 import globalReducer from './reducers';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
-const sessionUser = new SessionUser;
 
-const store=createStore(globalReducer);
+
+const nSession = new SessionUser();
+const nUser    = new User()
+nSession.state.login = " cams"
+const initialStore = {
+                        sessionReducer : nSession,
+                        user2Reducer    : nUser,
+                        cardReducer :{}
+                      }
+
+const store=createStore(globalReducer,initialStore);
+//sessionUser.initSession();
 
 //extends the object Component
 class App extends Component {
@@ -28,7 +38,6 @@ class App extends Component {
         
         //creation of an initial state, a json object
         this.state = {
-            
         }; 
     }
 

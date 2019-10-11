@@ -5,13 +5,7 @@ class UserInfo extends Component{
     constructor(props){
         super(props);
         this.state={
-            id:this.props.id,
-            surname:this.props.surname,
-            lastname:this.props.lastname,
-            username:this.props.username,
-            pwd:this.props.pwd,
-            money:this.props.money,
-            email:this.props.email
+         
             
         }
     }

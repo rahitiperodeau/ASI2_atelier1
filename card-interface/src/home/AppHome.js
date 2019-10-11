@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import * as jsonSourceUsers from '../sources/users.json';
 import * as jsonSourceCards from '../sources/cards.json';
 
 import User from '../commonModel/User/User'
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import Button from '../commonModel/Button'
+import { connect } from 'react-redux';
 import CardSide from './components/cardSide/CardSide'
 
+import {userConnection} from '../actions'
+
+var axios=require('axios') ;
 
 class AppHome extends Component{
     constructor(props){
@@ -18,42 +20,86 @@ class AppHome extends Component{
         
 
         this.state={
-            currentUser_id:"4",
-            currentUser_surname:"Dimitri",
-            currentUser_lastname:"Crackers",
-            currentUser_username:"dimcracks",
-            currentUser_pwd:"coucou",
-            currentUser_money:"1000", 
-            card_list:temp_card_list.cards,
+            
+            
+            card_list:temp_card_list,
             
         };
-       
+
+        this.getUser = this.getUser.bind(this);
+        this.getUser(this.props.session.state.userId);
+
     }
 
+    getUser(uId){
+        let url = 'http://127.0.0.1:8082/user/'+uId;
+        let self = this;
+        let usrTemp ;
+        //usrTemp = new User();
+        axios.get(url).then(function(response){
+            console.log(response.data)
+            //usrTemp.initialiseUser(response.data);
+            usrTemp=response.data;
+            self.props.dispatch(userConnection(usrTemp));
+          
+        }).catch(function(err){
+            console.log(err);
+        });
+        
+            
+            
+        
+        //console.log(usrTemp);
+        //return usrTemp;
+        }
+
     render(){
+        let usr;
+
+        if(this.props.user === undefined){
+            return (<div></div>);
+        }
+
         return(
             <div>
                 <div className="container-fluid">
                     <h1>Welcome to your card manager</h1>
                 </div>
                 <div className="col-md-4 col-lg-4" >
+                {console.log(this.props)}
                 <User
-                        id={this.state.currentUser_id}
-                        surname={this.state.currentUser_surname}
-                        lastname={this.state.currentUser_lastname}
-                        username={this.state.currentUser_username}
-                        pwd={this.state.currentUser_pwd}
-                        money={this.state.currentUser_money}
+                        id = {this.props.user.id}
+                        surname={this.props.user.surName}
+                        lastname={this.props.user.lastName}
+                        username={this.props.user.login}
+                        money={this.props.user.account}
+
                     />
                 <CardSide
-                        cards ={this.state.card_list}
+                        cards ={this.state.card_list.cards}
                 />
                 </div>
                 <div className="col-md-4 col-lg-4" >
                     
                 </div>
+                <div>
+                   <Button 
+                            actionButton="GO_STORE" 
+                            message="Go to market"
+                            params = {this} // we send this to be redirect 
+                    />
                 </div>
+            </div>
         )
     };
 }
-export default AppHome;
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      session: state.sessionReducer,
+      user:     state.user2Reducer.user
+    }
+  };
+
+
+export default connect(mapStateToProps)(AppHome);

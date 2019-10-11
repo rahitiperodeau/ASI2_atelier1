@@ -3,6 +3,8 @@ import UserInfo from '../commonModel/User/components/UserInfo'
 import UserImg from '../sources/img/User.png';
 import SigninInfo from './components/SigninInfo'
 
+import {openSession} from '../actions'
+
 import { connect } from 'react-redux';
 
 var axios=require('axios') ;
@@ -15,47 +17,65 @@ class Signin extends Component {
     constructor(props) {
         super(props);
         //creation of an initial state, a json object
+       
+        //binding of the function given the ability to use this
+        this.processInput = this.processInput.bind(this); 
         this.state = {  
+            //session : this.props.session,
             login:"",
             pwd:"",           
         };
-        //binding of the function given the ability to use this
-        this.processInput=this.processInput.bind(this); 
     }
 
     
     processInput(pLogin,pPwd){
 
 
-        let url = 'http://127.0.0.1:8082/authID?login=' + pLogin + '&pwd=' + pPwd ;
-
-        axios.get(url)
-        .then(function (response) {
-            
-            if (response.data >0){
-                //sessionUser.openSession(pLogin,response.data);
-                window.location.href = '/home';
-
-            }else{
-                alert("Password or login incorrect please try-again or send an email to it@cpe.fr")
+        let self = this ;
+        let vCurrentSession = this.props.session ;
+        axios.get('http://localhost:8082/authID', {
+            params: {
+              login: pLogin,
+              pwd : pPwd
             }
-             
-
+          })
+          .then(function (response) {
+              if (response.data > 0){
+                vCurrentSession.state.login = pLogin;
+                vCurrentSession.state.userId = response.data;
+                self.props.dispatch(openSession(vCurrentSession));
+                self.props.history.push('/home')
+              }else{
+                alert("the username or password is incorrect, plese try again or contact it@cpe.fr")
+              }
+              
           })
           .catch(function (error) {
-            // handle error
             console.log(error);
           })
+          .finally(function () {
+            // always executed
+          });  
+
+        
     }
 
 
   render() {
     // return the react specific virtual dom
+
+
+    console.log(this.state.login);
     return (
+      <div>
+      <div>
+        {this.props.session.state.login}
+      </div>
       <SigninInfo
           processInput  = {this.processInput}
           signinImg     = {UserImg}
       />
+      </div>
    );
   }
 
@@ -63,9 +83,10 @@ class Signin extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-      sessionUser: state.sessionReducer
-    }
-  };
+  return {
+    session: state.sessionReducer
+  }
+};
+
 //export the current classes in order to be used outside
 export default connect(mapStateToProps)(Signin);

@@ -1,5 +1,4 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
 import UserInfo from './components/UserInfo'
 
 class User extends React.Component{
@@ -7,12 +6,33 @@ class User extends React.Component{
         super(props);
 
         this.state = {
-       
+                    id : 0,
+                    username : "",
+                    surname:"",
+                    lastname:"",
+                    money:""
         }
         
+        this.initialiseUser = this.initialiseUser.bind(this);
 
     }
 
+    
+    initialiseUser(pUser){
+        this.setState(
+            { 
+                id:pUser.id,
+                username:pUser.username,
+                surname:pUser.surname,
+                lastname:pUser.lastname,
+                money:pUser.money,      
+            }
+        );
+        //this.state.username = pUser.login;
+        //this.state.surname  = pUser.surName;
+        //this.state.lastname = pUser.lastName;
+        //this.state.money    = pUser.account;
+    }
 
     render(){
         return(

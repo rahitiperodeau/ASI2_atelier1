@@ -24,8 +24,9 @@ class Panel extends Component {
                   
                         
                                              
-                            <Button 
-                                message = 'Buy'/>
+                            <Buy 
+                                user={this.props.user}
+                                 card_id ={this.props.card.id}/>
                         </div>
                         
                     </div>

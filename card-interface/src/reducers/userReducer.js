@@ -1,12 +1,11 @@
-const userReducer= (state={user:{},submitted_user:{}},action) => {
+const user2Reducer= (state={user:{}},action) => {
     switch (action.type) {
-        case 'UPDATE_USER_ACTION':
-            return {user:action.user,submitted_user:state.submitted_user};
-        case 'SUBMIT_USER_ACTION':  
-            return {user:state.user,submitted_user:action.user};
+        case 'USER_CONNECTED' :
+                let tmp_user=JSON.parse(JSON.stringify(action.obj));
+            return {user:tmp_user};
     default:
       return state;
     }
 }
 
-export default userReducer;
+export default user2Reducer;
