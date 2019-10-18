@@ -3,9 +3,7 @@ import { switchCase } from '@babel/types';
 
 import { GetCardsList } from '../actions';
 
-import { connect } from 'react-redux';
 
-var axios=require('axios') ;
 
 
 import { connect } from 'react-redux';
@@ -44,43 +42,38 @@ class Button extends React.Component{
         let self=this;
         
         let usrTemp;
-        usrTemp = new User();
+        //usrTemp = new User();
         let url = 'http://127.0.0.1:8082/user/'+uId;
         axios.get(url).then(function(response){
-            //console.log(response.data)
-            usrTemp.initialiseUser(response.data);
-            //console.log(usrTemp.cardList);
+            usrTemp = response.data;
+            //usrTemp.initialiseUser(response.data);
             self.props.dispatch(userConnection(usrTemp));
         }).catch(function(err){
-            //console.log(err);
+            console.log(err);
         })
     }
 
     handleOnButton(params,uId,cId){
         let that=this;
         let new_order={};
-        //console.log(uId);
-        //console.log(cId);
         let actionButton = this.props.actionButton;
         switch (actionButton) {
             case 'BUY_CARD':
-              //console.log('We buy a card');
               break;
             case 'SELL_CARD':
                     new_order.user_id=uId;
                     
                     new_order.card_id=cId;                
-                    //console.log('We sell a card');
                     axios.post("http://127.0.0.1:8082/sell",new_order)
                     .then((response)=>{
-                        //console.log(response.data);
                         if(response.data){
                             that.getUserCardList(uId);
+                            
                         }
     
                     })
                     .catch(function(err){
-                        //console.log(err);
+                        console.log(err);
                     });
                 
                 break;
@@ -90,9 +83,10 @@ class Button extends React.Component{
 
                     params.props.history.push('/market');
                     break;
-
             
-            
+            case 'GO_HOME':
+                    params.props.history.push('/home');
+                    break;
             default:
 
               console.log('Sorry, no action defined');

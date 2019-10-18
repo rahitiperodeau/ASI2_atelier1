@@ -41,7 +41,7 @@ class AppHome extends Component{
         this.state={
             
             
-            card_list:temp_card_list,
+            
             
         };
 
@@ -100,8 +100,8 @@ class AppHome extends Component{
 
                     />
                 <CardSide
-                        cards ={this.state.card_list.cards}
-                  user_id = {this.props.user.id}
+                        cards ={this.props.user.cardList}
+                        user_id = {this.props.user.id}
 
               
                 />

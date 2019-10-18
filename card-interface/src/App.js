@@ -22,11 +22,9 @@ const nUser    = new User()
 const initialStore = {
                         sessionReducer : nSession,
                         user2Reducer    : nUser,
-                        cardReducer :{}
+                        cardReducer :{},
 
-const initialStore = {
-                        sessionReducer : nSession,
-                        user2Reducer    : nUser
+
 
                       }
 

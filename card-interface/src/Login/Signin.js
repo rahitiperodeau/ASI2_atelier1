@@ -40,7 +40,7 @@ class Signin extends Component {
             }
           })
           .then(function (response) {
-              if (response.data > 0){
+              if (response.data !== undefined){
                 vCurrentSession.state.login = pLogin;
                 vCurrentSession.state.userId = response.data;
                 self.props.dispatch(openSession(vCurrentSession));
