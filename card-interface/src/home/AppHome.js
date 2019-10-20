@@ -115,6 +115,15 @@ class AppHome extends Component{
                             message="Go to market"
                             params = {this} // we send this to be redirect 
                     />
+
+                </div>
+                <div>
+                   <Button 
+                            actionButton="GO_FIGHT" 
+                            message="Go to fight room"
+                            params = {this} // we send this to be redirect 
+                    />
+                    
                 </div>
             </div>
 

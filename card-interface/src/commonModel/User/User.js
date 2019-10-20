@@ -11,7 +11,9 @@ class User extends React.Component{
                     surname:"",
                     lastname:"",
                     money:"",
-                    cardList:[]
+                    cardList:[],
+                    cardListToPlay:[],
+                   
 
         }
         
@@ -48,6 +50,7 @@ class User extends React.Component{
                     surname={this.props.surname}
                     lastname={this.props.lastname}
                     money={this.props.money}
+                    actionPoints={this.props.actionPoints}
                 />
             </div>
         )

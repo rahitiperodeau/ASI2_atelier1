@@ -4,6 +4,7 @@ import './lib/bootstrap-3.3.7-dist/css/bootstrap.min.css';
 import AppHome from './home/AppHome'
 import AppLogin from './Login/Signin'
 import AppStore from './store/store'
+import AppFight from './FightRoom/FightRoom'
 
 import SessionUser from './commonModel/SessionUser'
 import {Provider} from 'react-redux';
@@ -60,6 +61,7 @@ class App extends Component {
                   <Route exact path ="/"        component={AppLogin}  />
                   <Route  path      ="/home"    component={AppHome}   />
                   <Route  path      ="/market"  component={AppStore}  />
+                  <Route  path      ="/fight"   component={AppFight}  />
                 </div>
               </Router>
           </Provider>
