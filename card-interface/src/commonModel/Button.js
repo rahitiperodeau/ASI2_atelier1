@@ -32,7 +32,8 @@ class Button extends React.Component{
         this.getUserCardList = this.getUserCardList.bind(this);
         this.bigFight=this.bigFight.bind(this);
         this.startGame=this.startGame.bind(this);
-
+        this.isEndGameForOponent=this.isEndGameForOponent.bind(this);       
+        this.isEndGameForYou=this.isEndGameForYou.bind(this);       
     }
 
     startGame(){
@@ -41,11 +42,10 @@ class Button extends React.Component{
         let list2 = self.props.list2;
         let player1First;
         let player2First;
-        let actionPt1=0;
-        let actionPt2=0;
-        let a;
+        
+        
         //on tire au hasard le joueur qui commence
-        a =parseInt(Math.random()*10)%2;
+        let a =parseInt(Math.random()*10)%2;
         if (a==0){
             player1First=true;
             player2First=false;
@@ -60,18 +60,20 @@ class Button extends React.Component{
         self.props.dispatch(setPlayer1State(player1First));
         self.props.dispatch(setPlayer2State(player2First));
 
-        self.props.dispatch(setActionPoints1(1));
-        self.props.dispatch(setActionPoints2(1));
-        //self.props.dispatch(setActionPoints2(1));
+        self.props.dispatch(setActionPoints1(10));
+        self.props.dispatch(setActionPoints2(0));
+        
         
     }
 
-    tooglePlayer(player1,player2){
+    tooglePlayer(){
         let self=this;
         let empty_array=[];
         let newPlayer1;
         let newPlayer2;
-        if (self.props.currentPlayer1){
+        let player1=self.props.currentPlayer1;
+        let player2=self.props.currentPlayer2;
+        if (player1==true){
             self.props.dispatch(cleanCardFightList(empty_array));
             
             newPlayer1=!player1;
@@ -82,6 +84,9 @@ class Button extends React.Component{
 
             self.props.dispatch(setActionPoints1(self.props.actionPoints1));
         }
+        else{
+            alert(`Ce n'est pas à vous de jouer`);
+        }
         
     }
 
@@ -91,25 +96,64 @@ class Button extends React.Component{
         let attackCard=temp_selectedCardFightList[0];
         let targetCard =temp_selectedCardFightList[1];
         let empty_array=[];
-        //attaque réussie
-        if (attackCard.attack > targetCard.defence){
-            that.props.dispatch(fightCards2(targetCard));
-        }
-        //attaque ratée
-        else{
-            //celui qui attaque se fait battre
-            if(targetCard.attack>attackCard.defence){
-                that.props.dispatch(fightCards1(attackCard));
-            }
-            //chacun a une attaque inf à la def de l'autre
-            else{
-                alert("Ton monstre et celui de ton adversaire se sont bien battu mais aucun d'entre eux n'est sorti vainqueur");
-            }
+        let actionPt1=that.props.actionPoints1;
+        if (temp_selectedCardFightList.length==2){
+                if(actionPt1!=0){
+                    //attaque réussie
+                    if (attackCard.attack > targetCard.defence){
+                        alert('attaque réussie')
+                        that.props.dispatch(fightCards2(targetCard));
+                        that.isEndGameForOponent();
+                    }
+                    //attaque ratée
+                    else{
+                        //celui qui attaque se fait battre
+                        if(targetCard.attack>attackCard.defence){
+                            alert(`attaque ratée, ton monstre s'est fait battre`);
+                            that.props.dispatch(fightCards1(attackCard));
+                            that.isEndGameForYou();
+                        }
+                        //chacun a une attaque inf à la def de l'autre
+                        else{
+                            alert("Ton monstre et celui de ton adversaire se sont bien battu mais aucun d'entre eux n'est sorti vainqueur");
+                        }
 
+                    }
+                    that.props.dispatch(hasAttacked1(that.props.actionPoints1));
+                    that.props.dispatch(cleanCardFightList(empty_array));
+                }
+                else{
+                    alert(`vous n'avez plus de points d'action`);
+                }
         }
-        that.props.dispatch(hasAttacked1(that.props.actionPoints1));
-        that.props.dispatch(cleanCardFightList(empty_array));
+        else{
+            alert(`veuillez d'abord choisir les cartes`)
+        }
+              
+        
     }
+
+    isEndGameForYou(){
+        let that=this;
+        let list1= that.props.cardListToPlay1;
+        //si c'est la derniere carte     
+        if(list1.length-1===0){
+            alert(`Vous n'avez plus de cartes. Vous avez perdu...`);
+        }
+    }
+
+    isEndGameForOponent(){
+        let that=this;
+        let list2= that.props.cardListToPlay2;
+        //si c'est la derniere carte
+        if(list2.length-1===0){
+            alert(`Votre adversaire n' plus de cartes. Vous avez gagné !`);
+        }        
+    }
+
+    
+
+    
       
     getCardsList(){
 
@@ -180,7 +224,7 @@ class Button extends React.Component{
                 break;
             case 'END_TURN':
                
-                that.tooglePlayer(this.props.currentPlayer1,this.props.currentPlayer2);
+                that.tooglePlayer();
                 break;
             case 'ATTACK1':
                 that.bigFight();
@@ -211,7 +255,9 @@ const mapStateToProps = (state,ownProps)=>{
         currentPlayer2: state.setPlayer2StateReducer,
         actionPoints1: state.setActionPointsReducer1.actionPoints1,
         actionPoints2: state.setActionPointsReducer2.actionPoints2,
-        //actionPoints2:state.setActionPointsReducer2.actionPoints2
+        cardListToPlay1:state.cardFightReducer1.cardListToPlay,
+        cardListToPlay2:state.cardFightReducer2.cardListToPlay
+        
     }
 };
 export default connect(mapStateToProps)(Button);

@@ -18,34 +18,43 @@ class Card extends Component{
      */
     handleOnCardSelected(card){
         let self=this;
-        if (self.props.isPlaying){
-            if (self.props.selectedCardFightList.length==0){
-                if (card.user == self.props.session.state.userId){
-                    alert('votre carte attaquante a été ajoutée');
-                    self.props.dispatch(setSelectedCardFight(card));
-                    
-                }
-                else{
-                    alert('veuillez choisir une de vos cartes');
-                }
+        let actionPt1 = self.props.actionPoints1;
 
-            }
-            if (self.props.selectedCardFightList.length==1){
-                if (card.user != self.props.session.state.userId){
-                    alert('la carte cible a été ajoutée');
-                    self.props.dispatch(setSelectedCardFight(card));
-                   
+        if (self.props.isPlaying){
+            if(actionPt1!=0){
+                if (self.props.selectedCardFightList.length==0){
+                    if (card.user == self.props.session.state.userId){
+                        alert('votre carte attaquante a été ajoutée');
+                        self.props.dispatch(setSelectedCardFight(card));
+                        return;
+                        
+                    }
+                    else{
+                        alert('veuillez choisir une de vos cartes');
+                    }
+    
                 }
-                else{
-                    alert('veuillez choisir une des cartes de l adversaire');
+                if (self.props.selectedCardFightList.length==1){
+                    if (card.user != self.props.session.state.userId){
+                        alert('la carte cible a été ajoutée');
+                        self.props.dispatch(setSelectedCardFight(card));
+                        return;
+                       
+                    }
+                    else{
+                        alert('veuillez choisir une des cartes de l adversaire');
+                    }
+                }
+                if (self.props.selectedCardFightList.length ==2){
+                    /*let empty_array=[]
+                    self.props.dispatch(cleanCardFightList(empty_array))*/
+                    alert('cartes déjà choisies');
                 }
             }
-            if (self.props.selectedCardFightList.length ==2){
-                /*let empty_array=[]
-                self.props.dispatch(cleanCardFightList(empty_array))*/
-                alert('cartes déjà choisies');
+            else{
+                alert(`vous n'avez plus de points d'action`);
             }
-        }
+        }   
         else{
             alert(`ce n'est pas à vous de jouer`);
         } 
@@ -65,7 +74,10 @@ class Card extends Component{
                         defence={this.props.defence}
                         isPlaying={this.props.isPlaying}
                     />
-                    <Visual
+                   
+                </div>
+                <div className="visual">
+                <Visual
                         src={this.props.card.imgUrl}
                     />
                 </div>
@@ -78,7 +90,8 @@ const mapStateToProps = (state,ownProps)=>{
     return{
         cardListToPlay1: state.cardFightReducer1.cardListToPlay,
         selectedCardFightList: state.cardFightingReducer.cardFightList,
-        session: state.sessionReducer
+        session: state.sessionReducer,
+        actionPoints1: state.setActionPointsReducer1.actionPoints1
         
     }
 };

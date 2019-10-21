@@ -32,9 +32,13 @@ class FightRoom extends Component {
         
         this.getCurrentPlayer=this.getCurrentPlayer.bind(this);
         this.loadCardsFight=this.loadCardsFight.bind(this);
-        //this.loadCardsFight();
+        
 
     }
+
+    
+
+    
 
     loadCardsFight(){
         let self = this;
@@ -66,8 +70,10 @@ class FightRoom extends Component {
     }
 
     render(){
-
+        let that=this;
+        
         return(
+            
             <div>
                 <div className="container-fluid">
                 <h1>The Fight Room</h1>
@@ -118,11 +124,7 @@ class FightRoom extends Component {
                             actionPoints={this.props.actionPoints2}
                             
                         />
-                        <Button
-                        actionButton='ATTACK2'
-                        message='player2 attaque'
                         
-                    /> 
                         <div className="player2Cards">
                              <CardsFight
                                 cards={this.props.cardListToPlay2}
@@ -135,6 +137,7 @@ class FightRoom extends Component {
                 <div className="currPlayer">
                     {this.getCurrentPlayer(this.props.currentPlayer1,this.props.currentPlayer2)} 
                 </div>
+                
                 <div className="endTurnButton">
                     <Button
                         actionButton="END_TURN"
@@ -164,7 +167,7 @@ const mapStateToProps = (state,ownProps)=>{
         currentPlayer2: state.setPlayer2StateReducer,
         actionPoints1: state.setActionPointsReducer1.actionPoints1,
         actionPoints2: state.setActionPointsReducer2.actionPoints2
-        //actionPoints2: state.setActionPointsReducer2.actionPoints2
+        
     }
 };
 export default connect(mapStateToProps)(FightRoom);
