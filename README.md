@@ -14,7 +14,7 @@ Repartition du travail par personne:
         Celine: Login page
         Camille: Store page
         
-Lien GitHub: https://github.com/rahitiperodeau/ASI2_atelier1_front_end/tree/master
+Lien GitHub: https://github.com/rahitiperodeau/ASI2_atelier1_front_end
              https://github.com/cdechandon/SpringBoot
              
 
