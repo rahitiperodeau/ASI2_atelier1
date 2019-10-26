@@ -40,7 +40,7 @@ class ListCards extends Component {
                         key                     = {i}
                         card                    = {this.props.cards[i]}
                         idCard                  = {idCard}
-                        user_id={this.props.user_id}
+                        user_id                 ={this.props.user_id}
                         idToDisplay             = {this.state.selected_card_id} //allows our CardLabelClass to Display all Info from only the card selected
                     />
                 )

@@ -17,6 +17,7 @@ class UserInfo extends Component{
                 <div>Lastname:{this.props.lastname}</div>
                 <div>Username:{this.props.username}</div>
                 <div>Money:{this.props.money}</div>
+                <div>Points action:{this.props.actionPoints}</div>
             </div>
         );
     }

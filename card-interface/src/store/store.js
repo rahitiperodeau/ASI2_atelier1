@@ -12,6 +12,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import globalReducer from '../reducers';
 
+import Button from '../commonModel/Button';
+
 const store = createStore(globalReducer);
 
 //extends the object Component
@@ -46,7 +48,13 @@ class Main extends Component {
             <h1> Welcome to card shop</h1>
         </div>
         <div className="row">
-
+        <div>
+                   <Button 
+                            actionButton="GO_HOME" 
+                            message="Go to home"
+                            params = {this} // we send this to be redirect 
+                    />
+                </div>
                   <User
                        id = {this.props.user.id}
                        surname={this.props.user.surName}
@@ -87,7 +95,9 @@ class Main extends Component {
 
         
         </div>
+                
       </div>
+      
 
     );
   }
