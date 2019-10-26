@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # ASI2_atelier1_front_end
 
 Création d'un BackEnd d'une application de gestion de cartes (à la base monolithique à) SOA. 
@@ -14,7 +14,7 @@ Repartition du travail par personne:
         Celine: Login page
         Camille: Store page
         
-Lien GitHub: https://github.com/rahitiperodeau/ASI2_atelier1_front_end/new/master?readme=1
+Lien GitHub: https://github.com/rahitiperodeau/ASI2_atelier1_front_end/tree/master
              https://github.com/cdechandon/SpringBoot
              
 
