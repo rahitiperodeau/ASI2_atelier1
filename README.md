@@ -1,7 +1,7 @@
 
 # ASI2_atelier1_front_end
 
-Création d'un BackEnd d'une application de gestion de cartes (à la base monolithique à) SOA. 
+Front-end d'une application de gestion de cartes. 
 
 Membres: Andrieux Séraphin
          Dahan Camille
